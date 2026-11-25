@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff"><title>Mockups de Roupas e Ecobags | Almatiê Art — V10</title>
+<style>
+:root{--ink:#292039;--muted:#80748e;--line:#eadfe9;--paper:#fffdfa;--pink:#d83b87;--purple:#873fa0;--grad:linear-gradient(105deg,#d83b87,#873fa0);--shadow:0 8px 24px rgba(65,35,72,.08)}
+*{box-sizing:border-box}body{margin:0;background:#fbf8f5;color:var(--ink);font:14px/1.45 Inter,system-ui,Arial,sans-serif;height:100vh;overflow:hidden}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}.topbar{height:60px;background:white;border-bottom:1px solid #eee5ec;display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}.mark{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:white;font:700 22px Georgia}.brandname{font:700 19px Georgia;color:#b6337d}.sub{font-size:11px;color:var(--muted)}
+.actions{display:flex;gap:8px}.btn{border:0;border-radius:11px;padding:10px 14px;font-weight:700;background:#f3edf4}.btn.primary{background:var(--grad);color:white;box-shadow:0 6px 16px #b43e8b30}.app{height:calc(100vh - 60px);display:grid;grid-template-columns:280px minmax(320px,1fr) 390px;gap:14px;padding:14px;max-width:1800px;margin:auto}
+.panel,.stage,.library{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-height:0}.panel{padding:18px;overflow:auto}.panel h2,.libtitle{font:700 19px Georgia;margin:0 0 14px}.field{margin:0 0 15px}.field label,.lbl{display:block;font-weight:700;font-size:12px;margin-bottom:6px;color:#45344f}.hint{font-size:11px;color:var(--muted);line-height:1.45;margin-top:6px}
+.drop{display:block;padding:14px;border:1.5px dashed #d7c6d7;border-radius:13px;background:white;text-align:center;cursor:pointer}.drop input{display:none}.drop b{display:block}.drop small{color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--pink)}.rangehead{display:flex;justify-content:space-between;font-size:11px;margin:10px 0 2px}.rangehead output{color:var(--muted);font-variant-numeric:tabular-nums}
+select{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;background:white}.stage{padding:12px;display:grid;place-items:center;position:relative;overflow:hidden}.canvaswrap{width:min(100%,calc(100vh - 120px));aspect-ratio:1;position:relative;background:#eee8ed;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px #38233d1f}.canvaswrap canvas{width:100%;height:100%;display:block}.canvaswrap #interaction{position:absolute;inset:0;z-index:3;touch-action:none;cursor:default}.canvaswrap #interaction.editing{cursor:move}.hud{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}.pill{background:#ffffffd9;backdrop-filter:blur(8px);border:1px solid #fff;padding:7px 12px;border-radius:99px;font-weight:700;font-size:12px;max-width:75%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.library{display:flex;flex-direction:column;overflow:hidden;min-height:0}.libhead{padding:14px 14px 10px;flex:0 0 auto}.libtop{display:flex;align-items:center;justify-content:space-between}.libtitle{margin:0}.count{font-size:11px;color:var(--muted)}.search{width:100%;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:11px;background:white}.filters{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;padding:0 12px 10px;flex:0 0 auto;min-height:42px;align-items:center}.filter{border:1px solid var(--line);border-radius:99px;padding:7px 10px;background:white;white-space:nowrap;font-size:11px;font-weight:700}.filter.on{background:var(--grad);color:white;border-color:transparent}.grid{flex:1 1 auto;min-height:0;border-top:1px solid #f1e8f0;overflow:auto;padding:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;align-content:start}.thumb{border:0;padding:0;border-radius:11px;overflow:hidden;background:white;box-shadow:0 1px 5px #38233d17;text-align:left}.thumb img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.thumb span{display:block;padding:5px 6px;font-size:10px;font-weight:700;line-height:1.2;min-height:30px}.thumb.on{outline:2px solid var(--pink);outline-offset:1px}.note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:15px;padding:11px;background:#faf4f9;border-radius:12px}
+@media(max-width:1100px){body{height:auto;overflow:auto}.app{height:auto;display:flex;flex-direction:column;padding:8px}.stage{order:0;min-height:45vh}.canvaswrap{width:min(90vw,55vh)}.panel{order:1}.library{order:2;max-height:55vh}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.topbar{padding:0 12px}.sub{display:none}}
+@media(max-width:560px){.brandname{font-size:16px}.mark{width:32px;height:32px}.btn{padding:9px 10px;font-size:12px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+ .art-preview{display:flex;align-items:center;gap:10px;margin-top:10px;padding:8px;border:1px solid #e5dce4;border-radius:10px;background:#fff}.art-preview[hidden]{display:none}.art-preview img{width:64px;height:64px;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 50%/12px 12px;border-radius:6px}.art-preview .btn{padding:6px 10px;font-size:12px}</style></head>
+<body>
+<header class="topbar"><div class="brand"><div class="mark">A</div><div><div class="brandname">Almatiê Art</div><div class="sub">Mockups para camisetas e ecobags</div></div></div><div class="actions"><button class="btn" id="uploadBtn">Enviar arte</button><button class="btn primary" id="downloadBtn">Baixar mockup PNG</button></div></header>
+<main class="app">
+<aside class="panel"><h2>Personalize seu mockup</h2>
+<div class="field"><span class="lbl">Sua arte</span><label class="drop"><b>＋ Enviar estampa</b><small>PNG, JPG, WebP, GIF ou BMP · prefira PNG transparente</small><input id="artInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,.png,.jpg,.jpeg,.webp,.gif,.bmp"></label><div class="hint" id="artName">Nenhuma arte enviada. Uma estampa demonstrativa será usada.</div><div id="artPreview" class="art-preview" hidden><img id="artPreviewImg" alt="Pré-visualização da arte enviada"><button type="button" id="removeArt" class="btn">Remover arte</button></div></div>
+<div class="field"><label for="blend">Integração com o tecido</label><select id="blend"><option value="normal">Cores originais — sem mesclagem</option><option value="multiply">Realista — preservar luz e sombras</option><option value="soft">Suave — estampa mais discreta</option></select><div class="hint">O modo realista aproveita a luminosidade da fotografia. O carregamento otimizado mantém os cenários já abertos em memória para trocar de modelo com mais rapidez.</div></div>
+<div class="field"><label>Deformação conforme o tecido</label><div class="rangehead"><span>Integração das dobras</span><output id="owrinkle">55%</output></div><input id="wrinkle" type="range" min="0" max="100" value="55"><div class="hint">A prioridade é manter a estampa visível e fiel às cores. A integração de sombras pode ser ajustada no modo Realista.</div></div>
+<div class="field"><label>Ajuste da área de aplicação</label><div class="hint">Clique sobre a estampa para selecioná-la. Arraste para mover e use qualquer uma das quatro alças dos cantos para redimensionar. Clique fora para concluir. Os controles deslizantes continuam disponíveis.</div>
+<div class="rangehead"><span>Posição horizontal</span><output id="ox">50%</output></div><input id="x" type="range" min="0" max="100" value="50">
+<div class="rangehead"><span>Posição vertical</span><output id="oy">50%</output></div><input id="y" type="range" min="0" max="100" value="50">
+<div class="rangehead"><span>Largura da estampa</span><output id="ow">34%</output></div><input id="w" type="range" min="8" max="94" value="34">
+<div class="rangehead"><span>Altura da estampa</span><output id="oh">30%</output></div><input id="h" type="range" min="8" max="94" value="30">
+<div class="rangehead"><span>Rotação</span><output id="or">0°</output></div><input id="rot" type="range" min="-25" max="25" value="0">
+<div class="rangehead"><span>Intensidade da estampa</span><output id="oa">88%</output></div><input id="alpha" type="range" min="20" max="100" value="88"></div>
+<div class="field"><button class="btn" id="reset">Restaurar posição sugerida</button></div>
+<div class="note"><b>Sobre o realismo</b><br>Cada cenário possui uma área de impressão própria, menor que a peça inteira, para manter a estampa dentro do painel frontal. O modo Realista combina a estampa com a luminosidade, as sombras e os vincos já presentes na fotografia. É uma integração 2D por mesclagem de luz, não uma simulação física 3D do tecido.</div>
+</aside>
+<section class="stage"><div class="canvaswrap"><canvas id="preview" width="1254" height="1254"></canvas><canvas id="interaction" width="1254" height="1254" aria-label="Área interativa para mover e redimensionar a estampa"></canvas><div class="hud"><div class="pill" id="sceneLabel">Carregando cenário…</div><div class="pill" id="sceneNum">1 / 70</div></div></div></section>
+<section class="library"><div class="libhead"><div class="libtop"><h2 class="libtitle">Cenários</h2><span class="count" id="count"></span></div><input class="search" id="search" placeholder="Buscar cenário…" type="search"></div><div class="filters" id="filters"></div><div class="grid" id="gallery"></div></section>
+</main>
+<script>
+const SCENES=[{"id": 1, "src": "assets/cena-01.webp", "thumb": "assets/thumbs/cena-01.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 01"}, {"id": 2, "src": "assets/cena-02.webp", "thumb": "assets/thumbs/cena-02.webp", "type": "ecobag", "name": "Ecobag · Cenário 02"}, {"id": 3, "src": "assets/cena-03.webp", "thumb": "assets/thumbs/cena-03.webp", "type": "ecobag", "name": "Ecobag · Cenário 03"}, {"id": 4, "src": "assets/cena-04.webp", "thumb": "assets/thumbs/cena-04.webp", "type": "ecobag", "name": "Ecobag · Cenário 04"}, {"id": 5, "src": "assets/cena-05.webp", "thumb": "assets/thumbs/cena-05.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 05"}, {"id": 6, "src": "assets/cena-06.webp", "thumb": "assets/thumbs/cena-06.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 06"}, {"id": 7, "src": "assets/cena-07.webp", "thumb": "assets/thumbs/cena-07.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 07"}, {"id": 8, "src": "assets/cena-08.webp", "thumb": "assets/thumbs/cena-08.webp", "type": "ecobag", "name": "Ecobag · Cenário 08"}, {"id": 9, "src": "assets/cena-09.webp", "thumb": "assets/thumbs/cena-09.webp", "type": "ecobag", "name": "Ecobag · Cenário 09"}, {"id": 10, "src": "assets/cena-10.webp", "thumb": "assets/thumbs/cena-10.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 10"}, {"id": 11, "src": "assets/cena-11.webp", "thumb": "assets/thumbs/cena-11.webp", "type": "ecobag", "name": "Ecobag · Cenário 11"}, {"id": 12, "src": "assets/cena-12.webp", "thumb": "assets/thumbs/cena-12.webp", "type": "ecobag", "name": "Ecobag · Cenário 12"}, {"id": 13, "src": "assets/cena-13.webp", "thumb": "assets/thumbs/cena-13.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 13"}, {"id": 14, "src": "assets/cena-14.webp", "thumb": "assets/thumbs/cena-14.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 14"}, {"id": 15, "src": "assets/cena-15.webp", "thumb": "assets/thumbs/cena-15.webp", "type": "ecobag", "name": "Ecobag · Cenário 15"}, {"id": 16, "src": "assets/cena-16.webp", "thumb": "assets/thumbs/cena-16.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 16"}, {"id": 17, "src": "assets/cena-17.webp", "thumb": "assets/thumbs/cena-17.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 17"}, {"id": 18, "src": "assets/cena-18.webp", "thumb": "assets/thumbs/cena-18.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 18"}, {"id": 19, "src": "assets/cena-19.webp", "thumb": "assets/thumbs/cena-19.webp", "type": "dupla", "name": "Camisetas em dupla · Cenário 19"}, {"id": 20, "src": "assets/cena-20.webp", "thumb": "assets/thumbs/cena-20.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 20"}, {"id": 21, "src": "assets/cena-21.webp", "thumb": "assets/thumbs/cena-21.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 21"}, {"id": 22, "src": "assets/cena-22.webp", "thumb": "assets/thumbs/cena-22.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 22"}, {"id": 23, "src": "assets/cena-23.webp", "thumb": "assets/thumbs/cena-23.webp", "type": "ecobag", "name": "Ecobag · Cenário 23"}, {"id": 24, "src": "assets/cena-24.webp", "thumb": "assets/thumbs/cena-24.webp", "type": "ecobag", "name": "Ecobag · Cenário 24"}, {"id": 25, "src": "assets/cena-25.webp", "thumb": "assets/thumbs/cena-25.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 25"}, {"id": 26, "src": "assets/cena-26.webp", "thumb": "assets/thumbs/cena-26.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 26"}, {"id": 27, "src": "assets/cena-27.webp", "thumb": "assets/thumbs/cena-27.webp", "type": "ecobag", "name": "Ecobag · Cenário 27"}, {"id": 28, "src": "assets/cena-28.webp", "thumb": "assets/thumbs/cena-28.webp", "type": "ecobag", "name": "Ecobag · Cenário 28"}, {"id": 29, "src": "assets/cena-29.webp", "thumb": "assets/thumbs/cena-29.webp", "type": "dupla", "name": "Camisetas em dupla · Cenário 29"}, {"id": 30, "src": "assets/cena-30.webp", "thumb": "assets/thumbs/cena-30.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 30"}, {"id": 31, "src": "assets/cena-31.webp", "thumb": "assets/thumbs/cena-31.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 31"}, {"id": 32, "src": "assets/cena-32.webp", "thumb": "assets/thumbs/cena-32.webp", "type": "ecobag", "name": "Ecobag · Cenário 32"}, {"id": 33, "src": "assets/cena-33.webp", "thumb": "assets/thumbs/cena-33.webp", "type": "ecobag", "name": "Ecobag · Cenário 33"}, {"id": 34, "src": "assets/cena-34.webp", "thumb": "assets/thumbs/cena-34.webp", "type": "ecobag", "name": "Ecobag · Cenário 34"}, {"id": 35, "src": "assets/cena-35.webp", "thumb": "assets/thumbs/cena-35.webp", "type": "ecobag", "name": "Ecobag · Cenário 35"}, {"id": 36, "src": "assets/cena-36.webp", "thumb": "assets/thumbs/cena-36.webp", "type": "ecobag", "name": "Ecobag · Cenário 36"}, {"id": 37, "src": "assets/cena-37.webp", "thumb": "assets/thumbs/cena-37.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 37"}, {"id": 38, "src": "assets/cena-38.webp", "thumb": "assets/thumbs/cena-38.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 38"}, {"id": 39, "src": "assets/cena-39.webp", "thumb": "assets/thumbs/cena-39.webp", "type": "ecobag", "name": "Ecobag · Cenário 39"}, {"id": 40, "src": "assets/cena-40.webp", "thumb": "assets/thumbs/cena-40.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 40"}, {"id": 41, "src": "assets/cena-41.webp", "thumb": "assets/thumbs/cena-41.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 41"}, {"id": 42, "src": "assets/cena-42.webp", "thumb": "assets/thumbs/cena-42.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 42"}, {"id": 43, "src": "assets/cena-43.webp", "thumb": "assets/thumbs/cena-43.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 43"}, {"id": 44, "src": "assets/cena-44.webp", "thumb": "assets/thumbs/cena-44.webp", "type": "dupla", "name": "Camisetas em dupla · Cenário 44"}, {"id": 45, "src": "assets/cena-45.webp", "thumb": "assets/thumbs/cena-45.webp", "type": "ecobag", "name": "Ecobag · Cenário 45"}, {"id": 46, "src": "assets/cena-46.webp", "thumb": "assets/thumbs/cena-46.webp", "type": "ecobag", "name": "Ecobag · Cenário 46"}, {"id": 47, "src": "assets/cena-47.webp", "thumb": "assets/thumbs/cena-47.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 47"}, {"id": 48, "src": "assets/cena-48.webp", "thumb": "assets/thumbs/cena-48.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 48"}, {"id": 49, "src": "assets/cena-49.webp", "thumb": "assets/thumbs/cena-49.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 49"}, {"id": 50, "src": "assets/cena-50.webp", "thumb": "assets/thumbs/cena-50.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 50"}, {"id": 51, "src": "assets/cena-51.webp", "thumb": "assets/thumbs/cena-51.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 51"}, {"id": 52, "src": "assets/cena-52.webp", "thumb": "assets/thumbs/cena-52.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 52"}, {"id": 53, "src": "assets/cena-53.webp", "thumb": "assets/thumbs/cena-53.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 53"}, {"id": 54, "src": "assets/cena-54.webp", "thumb": "assets/thumbs/cena-54.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 54"}, {"id": 55, "src": "assets/cena-55.webp", "thumb": "assets/thumbs/cena-55.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 55"}, {"id": 56, "src": "assets/cena-56.webp", "thumb": "assets/thumbs/cena-56.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 56"}, {"id": 57, "src": "assets/cena-57.webp", "thumb": "assets/thumbs/cena-57.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 57"}, {"id": 58, "src": "assets/cena-58.webp", "thumb": "assets/thumbs/cena-58.webp", "type": "ecobag", "name": "Ecobag · Cenário 58"}, {"id": 59, "src": "assets/cena-59.webp", "thumb": "assets/thumbs/cena-59.webp", "type": "ecobag", "name": "Ecobag · Cenário 59"}, {"id": 60, "src": "assets/cena-60.webp", "thumb": "assets/thumbs/cena-60.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 60"}, {"id": 61, "src": "assets/cena-61.webp", "thumb": "assets/thumbs/cena-61.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 61"}, {"id": 62, "src": "assets/cena-62.webp", "thumb": "assets/thumbs/cena-62.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 62"}, {"id": 63, "src": "assets/cena-63.webp", "thumb": "assets/thumbs/cena-63.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 63"}, {"id": 64, "src": "assets/cena-64.webp", "thumb": "assets/thumbs/cena-64.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 64"}, {"id": 65, "src": "assets/cena-65.webp", "thumb": "assets/thumbs/cena-65.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 65"}, {"id": 66, "src": "assets/cena-66.webp", "thumb": "assets/thumbs/cena-66.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 66"}, {"id": 67, "src": "assets/cena-67.webp", "thumb": "assets/thumbs/cena-67.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 67"}, {"id": 68, "src": "assets/cena-68.webp", "thumb": "assets/thumbs/cena-68.webp", "type": "masculina", "name": "Camiseta masculina · Cenário 68"}, {"id": 70, "src": "assets/cena-70.webp", "thumb": "assets/thumbs/cena-70.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 70"}, {"id": 71, "src": "assets/cena-71.webp", "thumb": "assets/thumbs/cena-71.webp", "type": "feminina", "name": "Camiseta feminina · Cenário 71"}];
+
+const PRINT_ZONES={"1":[0.36,0.36,0.3,0.32],"2":[0.32,0.43,0.36,0.34],"3":[0.35,0.43,0.32,0.3],"4":[0.35,0.42,0.32,0.31],"5":[0.35,0.35,0.3,0.34],"6":[0.33,0.34,0.34,0.36],"7":[0.34,0.33,0.31,0.34],"8":[0.32,0.42,0.36,0.34],"9":[0.38,0.39,0.29,0.28],"10":[0.33,0.34,0.34,0.35],"11":[0.32,0.42,0.36,0.34],"12":[0.32,0.42,0.36,0.34],"13":[0.37,0.36,0.29,0.31],"14":[0.37,0.35,0.29,0.31],"15":[0.33,0.42,0.36,0.33],"16":[0.34,0.35,0.32,0.34],"17":[0.34,0.33,0.31,0.34],"18":[0.34,0.33,0.31,0.34],"19":[0.29,0.36,0.25,0.3],"20":[0.34,0.34,0.32,0.35],"21":[0.35,0.31,0.3,0.34],"22":[0.36,0.36,0.29,0.32],"23":[0.35,0.42,0.32,0.3],"24":[0.34,0.4,0.32,0.37],"25":[0.35,0.35,0.3,0.34],"26":[0.34,0.34,0.31,0.34],"27":[0.34,0.42,0.34,0.33],"28":[0.35,0.41,0.31,0.3],"29":[0.29,0.36,0.24,0.3],"30":[0.34,0.34,0.32,0.35],"31":[0.37,0.35,0.29,0.32],"32":[0.34,0.4,0.32,0.37],"33":[0.34,0.42,0.34,0.32],"34":[0.34,0.42,0.34,0.32],"35":[0.34,0.4,0.32,0.37],"36":[0.34,0.4,0.32,0.37],"37":[0.34,0.34,0.32,0.35],"38":[0.35,0.34,0.3,0.34],"39":[0.34,0.4,0.32,0.37],"40":[0.37,0.35,0.29,0.31],"41":[0.34,0.35,0.32,0.34],"42":[0.35,0.32,0.3,0.34],"43":[0.34,0.34,0.32,0.34],"44":[0.29,0.36,0.24,0.3],"45":[0.32,0.42,0.36,0.34],"46":[0.34,0.42,0.34,0.32],"47":[0.35,0.34,0.3,0.34],"48":[0.34,0.34,0.32,0.35],"49":[0.35,0.31,0.3,0.34],"50":[0.36,0.36,0.29,0.32],"51":[0.34,0.34,0.32,0.34],"52":[0.34,0.34,0.32,0.35],"53":[0.35,0.34,0.3,0.34],"54":[0.35,0.35,0.3,0.33],"55":[0.34,0.34,0.32,0.34],"56":[0.34,0.34,0.32,0.35],"57":[0.34,0.34,0.32,0.34],"58":[0.34,0.42,0.34,0.32],"59":[0.34,0.4,0.32,0.37],"60":[0.34,0.35,0.32,0.34],"61":[0.37,0.35,0.29,0.31],"62":[0.35,0.34,0.3,0.34],"63":[0.34,0.34,0.31,0.34],"64":[0.34,0.34,0.31,0.34],"65":[0.34,0.34,0.31,0.34],"66":[0.37,0.35,0.29,0.32],"67":[0.34,0.34,0.32,0.34],"68":[0.34,0.34,0.31,0.34],"70":[0.37,0.35,0.29,0.31],"71":[0.37,0.35,0.29,0.32]};
+const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d',{alpha:false});
+const interaction=document.getElementById('interaction'),ictx=interaction.getContext('2d');
+const artCanvas=document.createElement('canvas');artCanvas.width=canvas.width;artCanvas.height=canvas.height;
+const ac=artCanvas.getContext('2d');
+let current=SCENES[0],sceneImg=null,artImg=null,filter='todos',query='',sceneToken=0,artObjectUrl=null,editMode=false,dragState=null;
+const imageCache=new Map();
+const $=id=>document.getElementById(id);
+const controls=['x','y','w','h','rot','alpha','wrinkle'];
+const defaults={masculina:[50,50,48,48,0],feminina:[50,50,48,48,0],ecobag:[50,50,54,54,0],dupla:[50,50,42,44,0]};
+function load(src){
+ if(imageCache.has(src))return imageCache.get(src);
+ const promise=new Promise((resolve,reject)=>{
+  const img=new Image();
+  img.decoding='async';
+  let settled=false;
+  const finish=(ok,value)=>{
+   if(settled)return;settled=true;
+   if(ok)resolve(value);else{imageCache.delete(src);reject(value instanceof Error?value:new Error('Não foi possível decodificar a imagem.'));}
+  };
+  img.onload=()=>{if(img.naturalWidth>0&&img.naturalHeight>0)finish(true,img);else finish(false,new Error('Imagem sem dimensões válidas.'));};
+  img.onerror=()=>finish(false,new Error('Falha ao abrir a imagem.'));
+  img.src=src;
+  if(img.complete&&img.naturalWidth>0)finish(true,img);
+ });
+ imageCache.set(src,promise);
+ return promise;
+}
+function loadArtworkFile(file){
+ return new Promise((resolve,reject)=>{
+  const objectURL=URL.createObjectURL(file);
+  const img=new Image();
+  img.onload=()=>{
+   if(!img.naturalWidth||!img.naturalHeight){URL.revokeObjectURL(objectURL);reject(new Error('Imagem sem dimensões válidas.'));return;}
+   if(artObjectUrl)URL.revokeObjectURL(artObjectUrl);
+   artObjectUrl=objectURL;
+   resolve(img);
+  };
+  img.onerror=()=>{
+   URL.revokeObjectURL(objectURL);
+   reject(new Error('O navegador não conseguiu decodificar este arquivo. Tente exportá-lo como PNG ou JPG.'));
+  };
+  img.src=objectURL;
+ });
+}
+function paintBackground(){
+ ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+ ctx.fillStyle='#eee8ed';ctx.fillRect(0,0,canvas.width,canvas.height);
+ if(sceneImg){
+  const s=Math.min(canvas.width/sceneImg.naturalWidth,canvas.height/sceneImg.naturalHeight);
+  const w=sceneImg.naturalWidth*s,h=sceneImg.naturalHeight*s;
+  ctx.drawImage(sceneImg,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+ }
+ ctx.restore();
+}
+function updateOutputs(){
+ for(const id of controls){const el=$(id),o=$('o'+id);if(o)o.textContent=id==='rot'?el.value+'°':el.value+'%';}
+}
+function setDefaults(){
+ const d=defaults[current.type]||defaults.masculina;
+ ['x','y','w','h','rot'].forEach((k,i)=>$(k).value=d[i]);
+ $('alpha').value=88;$('wrinkle').value=55;updateOutputs();render();
+}
+function geometry(){
+ const W=canvas.width,H=canvas.height,z0=PRINT_ZONES[current.id]||[.34,.34,.32,.34];
+ // Amplia a área útil sem alterar o centro de referência de cada cenário.
+ const z=[z0[0]-z0[2]*.16,z0[1]-z0[3]*.16,z0[2]*1.32,z0[3]*1.32];
+ const zx=Math.max(0,z[0])*W,zy=Math.max(0,z[1])*H;
+ const zw=Math.min(1,z[0]+z[2])*W-zx,zh=Math.min(1,z[1]+z[3])*H-zy;
+ const w=Math.min(zw*.96,(+$('w').value/100)*zw),h=Math.min(zh*.96,(+$('h').value/100)*zh);
+ const cx=zx+(+$('x').value/100)*zw,cy=zy+(+$('y').value/100)*zh;
+ return {zx,zy,zw,zh,cx,cy,w,h,angle:+$('rot').value*Math.PI/180};
+}
+function drawSelection(){
+ ictx.clearRect(0,0,interaction.width,interaction.height);
+ interaction.classList.toggle('editing',editMode&&!!artImg);
+ if(!editMode||!artImg||!sceneImg)return;
+ const g=geometry();ictx.save();ictx.translate(g.cx,g.cy);ictx.rotate(g.angle);
+ ictx.setLineDash([9,6]);ictx.lineWidth=3;ictx.strokeStyle='rgba(255,255,255,.95)';ictx.strokeRect(-g.w/2,-g.h/2,g.w,g.h);
+ ictx.setLineDash([]);ictx.lineWidth=2;ictx.strokeStyle='#d8328b';ictx.strokeRect(-g.w/2,-g.h/2,g.w,g.h);
+ const r=12;ictx.fillStyle='#fff';ictx.strokeStyle='#d8328b';ictx.lineWidth=3;
+ [[-g.w/2,-g.h/2],[g.w/2,-g.h/2],[-g.w/2,g.h/2],[g.w/2,g.h/2]].forEach(([x,y])=>{ictx.beginPath();ictx.arc(x,y,r,0,Math.PI*2);ictx.fill();ictx.stroke();});
+ ictx.restore();
+}
+function pointOnArt(px,py,g){
+ const dx=px-g.cx,dy=py-g.cy,c=Math.cos(-g.angle),s=Math.sin(-g.angle),x=dx*c-dy*s,y=dx*s+dy*c;
+ const near=(a,b)=>Math.hypot(x-a,y-b)<=30;
+ let handle=null;
+ if(near(-g.w/2,-g.h/2))handle='tl';
+ else if(near(g.w/2,-g.h/2))handle='tr';
+ else if(near(-g.w/2,g.h/2))handle='bl';
+ else if(near(g.w/2,g.h/2))handle='br';
+ return {x,y,inside:Math.abs(x)<=g.w/2&&Math.abs(y)<=g.h/2,handle};
+}
+function clampPlacement(){
+ const g=geometry(),minX=g.zx+g.w/2,minY=g.zy+g.h/2,maxX=g.zx+g.zw-g.w/2,maxY=g.zy+g.zh-g.h/2;
+ const cx=Math.max(minX,Math.min(maxX,g.cx)),cy=Math.max(minY,Math.min(maxY,g.cy));
+ $('x').value=Math.max(0,Math.min(100,((cx-g.zx)/g.zw)*100));$('y').value=Math.max(0,Math.min(100,((cy-g.zy)/g.zh)*100));updateOutputs();
+}
+function makeFabricWarp(g){
+ // O mapa é derivado da fotografia selecionada. A luminância e seus gradientes
+ // indicam cristas e vales; a estampa é deslocada em sentido oposto ao gradiente.
+ const size=560,src=document.createElement('canvas');src.width=size;src.height=size;
+ const sctx=src.getContext('2d',{willReadFrequently:true});sctx.drawImage(artImg,0,0,size,size);
+ const srcData=sctx.getImageData(0,0,size,size),out=sctx.createImageData(size,size);
+ const photo=document.createElement('canvas');photo.width=size;photo.height=size;
+ const pctx=photo.getContext('2d',{willReadFrequently:true});
+ pctx.drawImage(sceneImg,g.cx-g.w/2,g.cy-g.h/2,g.w,g.h,0,0,size,size);
+ const pd=pctx.getImageData(0,0,size,size).data,sd=srcData.data,od=out.data;
+ const lum=new Float32Array(size*size);
+ for(let i=0,j=0;i<pd.length;i+=4,j++)lum[j]=.2126*pd[i]+.7152*pd[i+1]+.0722*pd[i+2];
+ const strength=(+$('wrinkle').value/100),maxShift=2+strength*13;
+ const smooth=(a,b,c,d)=>((a+b+c+d)*.25);
+ for(let y=0;y<size;y++){
+  for(let x=0;x<size;x++){
+   const i=y*size+x,ix=i*4;
+   const xl=Math.max(0,x-2),xr=Math.min(size-1,x+2),yu=Math.max(0,y-2),yd=Math.min(size-1,y+2);
+   const gx=(lum[y*size+xr]-lum[y*size+xl])/255;
+   const gy=(lum[yd*size+x]-lum[yu*size+x])/255;
+   // Combina deslocamento de baixa frequência com pequenas ondulações locais.
+   const dx=Math.max(-maxShift,Math.min(maxShift,-gx*maxShift*1.8));
+   const dy=Math.max(-maxShift,Math.min(maxShift,-gy*maxShift*1.8));
+   const sx=Math.max(0,Math.min(size-1,Math.round(x+dx)));
+   const sy=Math.max(0,Math.min(size-1,Math.round(y+dy)));
+   const si=(sy*size+sx)*4;
+   od[ix]=sd[si];od[ix+1]=sd[si+1];od[ix+2]=sd[si+2];od[ix+3]=sd[si+3];
+  }
+ }
+ const warped=document.createElement('canvas');warped.width=size;warped.height=size;
+ warped.getContext('2d').putImageData(out,0,0);return warped;
+}
+function render(){
+ paintBackground();
+ if(!sceneImg||!artImg){drawSelection();return;}
+ const g=geometry();
+ ctx.save();
+ ctx.translate(g.cx,g.cy);
+ ctx.rotate(g.angle);
+ const ratio=Math.min(g.w/artImg.naturalWidth,g.h/artImg.naturalHeight);
+ const drawW=artImg.naturalWidth*ratio,drawH=artImg.naturalHeight*ratio;
+ const alpha=(+$('alpha').value/100),mode=$('blend').value;
+ // Multiplicação usa a própria fotografia como mapa de luz: sombras e vincos
+ // permanecem visíveis através da tinta, em vez de cobrir o tecido com um adesivo.
+ if(mode==='multiply'){
+  const foldStrength=(+$('wrinkle').value/100);
+  // A camada de cor mantém a estampa legível; a camada multiply transfere
+  // progressivamente as sombras e os vincos originais do tecido.
+  ctx.globalCompositeOperation='source-over';
+  ctx.globalAlpha=alpha*(1-foldStrength)*.42;
+  ctx.drawImage(artImg,-drawW/2,-drawH/2,drawW,drawH);
+  ctx.globalCompositeOperation='multiply';
+  ctx.globalAlpha=alpha*(.58+.42*foldStrength);
+  ctx.drawImage(artImg,-drawW/2,-drawH/2,drawW,drawH);
+ }else if(mode==='soft'){
+  ctx.globalCompositeOperation='multiply';
+  ctx.globalAlpha=alpha*.68;
+  ctx.drawImage(artImg,-drawW/2,-drawH/2,drawW,drawH);
+  ctx.globalCompositeOperation='soft-light';
+  ctx.globalAlpha=alpha*.22;
+  ctx.drawImage(artImg,-drawW/2,-drawH/2,drawW,drawH);
+ }else{
+  ctx.globalCompositeOperation='source-over';
+  ctx.globalAlpha=alpha;
+  ctx.drawImage(artImg,-drawW/2,-drawH/2,drawW,drawH);
+ }
+ ctx.restore();
+ drawSelection();
+}
+
+async function choose(scene){
+ const token=++sceneToken;current=scene;
+ $('sceneLabel').textContent=scene.name+' · carregando…';
+ $('sceneNum').textContent=(SCENES.indexOf(scene)+1)+' / '+SCENES.length;
+ document.querySelectorAll('.thumb').forEach(b=>b.classList.toggle('on',+b.dataset.id===scene.id));
+ sceneImg=null;paintBackground();
+ try{
+  const img=await load(scene.src);
+  if(token!==sceneToken)return;
+  sceneImg=img;$('sceneLabel').textContent=scene.name;
+  setDefaults();
+ }catch(err){
+  if(token===sceneToken){
+   $('sceneLabel').textContent='Erro ao carregar: '+scene.src;
+   paintBackground();
+  }
+  console.error(err);
+ }
+}
+function renderGallery(){
+ const list=SCENES.filter(s=>(filter==='todos'||s.type===filter)&&s.name.toLowerCase().includes(query));
+ $('gallery').innerHTML='';
+ list.forEach(s=>{
+  const b=document.createElement('button');b.className='thumb'+(s.id===current.id?' on':'');b.dataset.id=s.id;
+  const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.src=s.thumb||s.src;img.alt=s.name;
+  const label=document.createElement('span');label.textContent=s.name;b.append(img,label);
+  b.onclick=()=>choose(s);$('gallery').appendChild(b);
+ });
+ $('count').textContent=list.length+' cenários';
+}
+function setupFilters(){
+ const opts=[['todos','Todos'],['masculina','Masculinas'],['feminina','Femininas'],['ecobag','Ecobags'],['dupla','Duplas']];
+ $('filters').innerHTML='';
+ opts.forEach(([id,label])=>{
+  const b=document.createElement('button');b.className='filter'+(filter===id?' on':'');b.textContent=label;
+  b.onclick=()=>{filter=id;setupFilters();renderGallery();};$('filters').appendChild(b);
+ });
+}
+interaction.addEventListener('pointerdown',e=>{
+ if(!artImg||!sceneImg)return;
+ const rect=interaction.getBoundingClientRect(),px=(e.clientX-rect.left)*interaction.width/rect.width,py=(e.clientY-rect.top)*interaction.height/rect.height,g=geometry();
+ const hit=pointOnArt(px,py,g);
+ if(!editMode){if(hit.inside){editMode=true;drawSelection();dragState={mode:'move',startX:px,startY:py,cx:g.cx,cy:g.cy,w:g.w,h:g.h,ratio:g.w/g.h};interaction.setPointerCapture(e.pointerId);e.preventDefault();}return;}
+ if(hit.inside){dragState={mode:hit.handle?'resize':'move',handle:hit.handle||'br',startX:px,startY:py,cx:g.cx,cy:g.cy,w:g.w,h:g.h,ratio:g.w/g.h};interaction.setPointerCapture(e.pointerId);e.preventDefault();}
+ else {editMode=false;drawSelection();}
+});
+interaction.addEventListener('pointermove',e=>{
+ if(!dragState)return;
+ const rect=interaction.getBoundingClientRect(),px=(e.clientX-rect.left)*interaction.width/rect.width,py=(e.clientY-rect.top)*interaction.height/rect.height,dx=px-dragState.startX,dy=py-dragState.startY,g=geometry();
+ if(dragState.mode==='move'){
+  const nx=dragState.cx+dx,ny=dragState.cy+dy;
+  $('x').value=Math.max(0,Math.min(100,((nx-g.zx)/g.zw)*100));$('y').value=Math.max(0,Math.min(100,((ny-g.zy)/g.zh)*100));
+ }else{
+  const c=Math.cos(g.angle),sn=Math.sin(g.angle),localX=dx*c+dy*sn,localY=-dx*sn+dy*c;
+  const sx=dragState.handle.includes('r')?1:-1,sy=dragState.handle.includes('b')?1:-1;
+  const scaleX=(dragState.w+sx*localX)/dragState.w,scaleY=(dragState.h+sy*localY)/dragState.h;
+  const scale=Math.max(.12,Math.min(2.8,Math.max(scaleX,scaleY)));
+  const maxW=g.zw*.94,maxH=g.zh*.94,minScale=Math.max(g.zw*.08/dragState.w,g.zh*.08/dragState.h);
+  const finalScale=Math.min(scale,maxW/dragState.w,maxH/dragState.h);
+  const nw=dragState.w*finalScale,nh=dragState.h*finalScale;
+  const shiftX=sx*(nw-dragState.w)/2,shiftY=sy*(nh-dragState.h)/2;
+  const worldX=shiftX*c-shiftY*sn,worldY=shiftX*sn+shiftY*c;
+  $('w').value=Math.max(8,Math.min(94,nw/g.zw*100));$('h').value=Math.max(8,Math.min(94,nh/g.zh*100));
+  $('x').value=Math.max(0,Math.min(100,((dragState.cx+worldX-g.zx)/g.zw)*100));
+  $('y').value=Math.max(0,Math.min(100,((dragState.cy+worldY-g.zy)/g.zh)*100));
+ }
+ clampPlacement();updateOutputs();render();e.preventDefault();
+});
+function stopDrag(){dragState=null;}
+interaction.addEventListener('pointerup',stopDrag);interaction.addEventListener('pointercancel',stopDrag);
+interaction.addEventListener('dblclick',()=>{editMode=!editMode;drawSelection();});
+$('search').addEventListener('input',e=>{query=e.target.value.toLowerCase();renderGallery();});
+controls.forEach(id=>$(id).addEventListener('input',()=>{clampPlacement();updateOutputs();render();}));
+$('blend').value='multiply';$('blend').onchange=render;$('reset').onclick=setDefaults;
+$('uploadBtn').onclick=()=>$('artInput').click();
+$('artInput').onchange=async e=>{
+ const input=e.currentTarget,f=input.files&&input.files[0];
+ if(!f)return;
+ const allowed=/\.(png|jpe?g|webp|gif|bmp)$/i.test(f.name)||/^image\/(png|jpeg|webp|gif|bmp)$/.test(f.type);
+ if(!allowed){
+  $('artName').textContent='Formato não suportado. Use PNG, JPG, WebP, GIF ou BMP.';
+  input.value='';return;
+ }
+ if(f.size>40*1024*1024){
+  $('artName').textContent='Arquivo muito grande. Escolha uma imagem de até 40 MB.';
+  input.value='';return;
+ }
+ $('artName').textContent='Carregando '+f.name+'…';
+ $('artPreview').hidden=true;
+ const requestId=(window.__artLoadRequest=(window.__artLoadRequest||0)+1);
+ try{
+  const loaded=await loadArtworkFile(f);
+  if(requestId!==window.__artLoadRequest)return;
+  artImg=loaded;
+  $('artName').textContent=f.name+' · '+loaded.naturalWidth+' × '+loaded.naturalHeight+' px';
+  $('artPreviewImg').src=loaded.src;
+  $('artPreview').hidden=false;
+  editMode=true;
+  render();
+ }catch(err){
+  if(requestId===window.__artLoadRequest){
+   artImg=null;
+   $('artName').textContent='Falha ao carregar a estampa: '+err.message;
+   $('artPreview').hidden=true;
+   console.error('Erro ao carregar a arte:',err);
+   render();
+  }
+ }finally{
+  input.value='';
+ }
+};
+$('removeArt').onclick=()=>{
+ artImg=null;editMode=false;$('artPreview').hidden=true;
+ $('artName').textContent='Nenhuma arte enviada. Uma estampa demonstrativa será usada.';
+ if(artObjectUrl){URL.revokeObjectURL(artObjectUrl);artObjectUrl=null;}
+ render();
+};
+$('downloadBtn').onclick=()=>{
+ editMode=false;drawSelection();
+ if(!sceneImg){$('sceneLabel').textContent='Aguarde o carregamento do cenário';return;}
+ render();canvas.toBlob(blob=>{
+  if(!blob)return;
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.download='mockup-almatie-art.png';a.href=url;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
+ },'image/png');
+};
+(async()=>{
+ paintBackground();setupFilters();renderGallery();
+ const demo='<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700"><rect width="900" height="700" fill="#f7e6ef"/><circle cx="450" cy="350" r="245" fill="#873fa0"/><text x="450" y="330" text-anchor="middle" font-family="Georgia" font-size="105" font-weight="bold" fill="white">SUA ARTE</text><text x="450" y="420" text-anchor="middle" font-family="Arial" font-size="42" fill="white">Almatiê Art</text></svg>';
+ artImg=await load('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(demo));
+ await choose(SCENES[0]);
+})();
+</script></body></html>

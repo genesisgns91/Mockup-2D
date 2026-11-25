@@ -1,0 +1,29 @@
+ALMATIÊ ART — MOCKUPS V11 (simulador de estampas)
+
+COMO ABRIR
+- Hospedado em qualquer servidor/site: funciona direto (index.html).
+- Local: rode  python3 servidor.py  (abre http://localhost:8000).
+  Abrir o index.html por duplo clique (file://) NÃO funciona para o realismo: o navegador bloqueia a leitura de pixels.
+
+O QUE MUDOU
+1. Mapa individual por cenário (data/cenarios.js, gerado por tools/gerar_mapas.py):
+   área de impressão = maior retângulo que cabe no tecido detectado; referência de brilho; calibração de dobras.
+   Ajuste manual de um cenário: crie tools/ajustes.json  {"24":{"zona":[x,y,w,h],"dobra":70}}  e rode o script de novo.
+   (python3 tools/gerar_mapas.py --debug gera /home/claude/debug.jpg com as zonas desenhadas.)
+2. Motor de realismo (app.js › compose): luz ampla da foto + detalhe das dobras + deslocamento da estampa
+   pelo relevo (gradiente de luminância), amostragem bilinear, modos Tinta (multiply) e Opaca.
+3. Editor: alças nos 4 cantos e 4 lados, rotação pela bolinha (encaixe a cada 15°), guias magnéticas
+   (centro e bordas da área; Alt desativa), setas para ajuste fino, desfazer/refazer (Ctrl+Z / Ctrl+Shift+Z),
+   estampa nunca sai da área de impressão.
+4. Exportação: 1×, 2×, 3×, 4× (a estampa é redesenhada do arquivo original em cada tamanho) e opção
+   "somente a estampa" em PNG transparente, já com luz e dobras.
+5. Projetos salvos e biblioteca de estampas (IndexedDB do navegador), cenários favoritos, pré-carregamento
+   dos cenários vizinhos, layout responsivo.
+
+LIMITES CONHECIDOS (próximos passos)
+- O deslocamento vem da luminância da foto: não é malha 3D nem perspectiva real. Próximo marco: malha de
+  controle por cenário (4×4 pontos) para acompanhar a curvatura de ombros e ecobags com precisão.
+- Cenários "dupla" têm uma área de impressão (primeira camiseta). Braços/mãos sobre a peça ainda não ocultam a estampa
+  (exigem máscara de oclusão por cenário).
+- A foto base tem 1254 px; exports maiores ampliam a foto, não a estampa. Para qualidade final, usar fotos de maior resolução.
+- Projetos ficam no navegador do usuário; sincronizar entre aparelhos exige backend.
