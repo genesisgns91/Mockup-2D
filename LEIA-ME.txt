@@ -1,6 +1,8 @@
 ALMATIÊ ART — MOCKUPS V11 (simulador de estampas)
 
 COMO ABRIR
+- GitHub Pages: envie index.html, app.js e as pastas assets/ e data/. É só isso; o site é 100% HTML, CSS e JavaScript.
+  (tools/ e servidor.py são opcionais e não precisam ir para o site.)
 - Hospedado em qualquer servidor/site: funciona direto (index.html).
 - Local: rode  python3 servidor.py  (abre http://localhost:8000).
   Abrir o index.html por duplo clique (file://) NÃO funciona para o realismo: o navegador bloqueia a leitura de pixels.
