@@ -1,0 +1,1 @@
+{"name":"almatie-ferramentas","private":true,"description":"Gera as máscaras de cor dos cenários (node gerar_mascaras.js)","dependencies":{"@techstark/opencv-js":"^4.10.0-release.1","sharp":"^0.33.0"}}

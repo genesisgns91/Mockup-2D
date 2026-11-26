@@ -1,31 +1,49 @@
-ALMATIÊ ART — MOCKUPS V11 (simulador de estampas)
+ALMATIÊ ART — MOCKUPS V13 (camisetas, ecobags e canecas em um só site)
 
-COMO ABRIR
-- GitHub Pages: envie index.html, app.js e as pastas assets/ e data/. É só isso; o site é 100% HTML, CSS e JavaScript.
-  (tools/ e servidor.py são opcionais e não precisam ir para o site.)
-- Hospedado em qualquer servidor/site: funciona direto (index.html).
-- Local: rode  python3 servidor.py  (abre http://localhost:8000).
-  Abrir o index.html por duplo clique (file://) NÃO funciona para o realismo: o navegador bloqueia a leitura de pixels.
+PUBLICAR NO GITHUB PAGES
+Envie a pasta inteira: index.html, css/, js/, data/ e assets/.
+(tools/ é opcional e não precisa ir para o site.)
+O site é 100% HTML, CSS e JavaScript.
 
-O QUE MUDOU
-1. Mapa individual por cenário (data/cenarios.js, gerado por tools/gerar_mapas.py):
-   área de impressão = maior retângulo que cabe no tecido detectado; referência de brilho; calibração de dobras.
-   Ajuste manual de um cenário: crie tools/ajustes.json  {"24":{"zona":[x,y,w,h],"dobra":70}}  e rode o script de novo.
-   (python3 tools/gerar_mapas.py --debug gera /home/claude/debug.jpg com as zonas desenhadas.)
-2. Motor de realismo (app.js › compose): luz ampla da foto + detalhe das dobras + deslocamento da estampa
-   pelo relevo (gradiente de luminância), amostragem bilinear, modos Tinta (multiply) e Opaca.
-3. Editor: alças nos 4 cantos e 4 lados, rotação pela bolinha (encaixe a cada 15°), guias magnéticas
-   (centro e bordas da área; Alt desativa), setas para ajuste fino, desfazer/refazer (Ctrl+Z / Ctrl+Shift+Z),
-   estampa nunca sai da área de impressão.
-4. Exportação: 1×, 2×, 3×, 4× (a estampa é redesenhada do arquivo original em cada tamanho) e opção
-   "somente a estampa" em PNG transparente, já com luz e dobras.
-5. Projetos salvos e biblioteca de estampas (IndexedDB do navegador), cenários favoritos, pré-carregamento
-   dos cenários vizinhos, layout responsivo.
+TESTAR NO COMPUTADOR
+Abrir o index.html com duplo clique NÃO funciona: o navegador bloqueia a leitura dos pixels das imagens locais
+(isso vale para camisetas e agora também para canecas, que antes tinham as imagens embutidas no HTML).
+Use qualquer servidor local, por exemplo:  python3 -m http.server  ou  npx serve  e abra http://localhost:8000
 
-LIMITES CONHECIDOS (próximos passos)
-- O deslocamento vem da luminância da foto: não é malha 3D nem perspectiva real. Próximo marco: malha de
-  controle por cenário (4×4 pontos) para acompanhar a curvatura de ombros e ecobags com precisão.
-- Cenários "dupla" têm uma área de impressão (primeira camiseta). Braços/mãos sobre a peça ainda não ocultam a estampa
-  (exigem máscara de oclusão por cenário).
-- A foto base tem 1254 px; exports maiores ampliam a foto, não a estampa. Para qualidade final, usar fotos de maior resolução.
-- Projetos ficam no navegador do usuário; sincronizar entre aparelhos exige backend.
+ESTRUTURA
+index.html        página única (layout da v11 + recursos das canecas)
+css/style.css     estilos
+js/util.js        utilitários comuns
+js/garments.js    motor de camisetas e ecobags (deslocamento pelo relevo, luz do tecido, editor com alças, guias, histórico)
+js/cor.js         recoloração realista (camisetas, ecobags e canecas)
+js/mugs.js        motor de canecas (projeção cilíndrica, brilho do esmalte, cenas sem fundo, espelhar, fundos e efeitos)
+js/app.js         biblioteca unificada, filtros, favoritos, arte compartilhada, exportação/ZIP, projetos, atalhos
+data/cenarios.js  mapa individual de cada cenário de camiseta/ecobag (área de impressão e calibração)
+data/canecas.js   geometria de cada caneca + caminhos das imagens
+assets/           fotos dos cenários (camisetas/ecobags na raiz, canecas em assets/canecas)
+assets/mascaras/  máscara do tecido de cada camiseta/ecobag (e assets/canecas/mascaras para as canecas)
+tools/            (opcional) scripts de bastidor:
+                  gerar_mascaras.js (Node) gera as máscaras de cor · gerar_mapas.py gera data/cenarios.js
+
+COMO FUNCIONA
+- Um único catálogo com 122 cenários: 70 de camisetas/ecobags e 52 de canecas. Escolher um cenário troca sozinho
+  o motor e o painel; a mesma arte enviada vale para todos os produtos.
+- Filtros: Todos, Favoritos, Masculinas, Femininas, Ecobags, Duplas e Canecas (com os temas: Natal, Páscoa, etc.).
+- Favoritos são únicos para todos os produtos (os favoritos antigos de camisetas foram migrados).
+- Exportação: PNG, JPG, copiar imagem e ZIP (categoria atual, favoritos ou todos), nos dois produtos.
+- Projetos salvos e biblioteca de estampas ficam no navegador (IndexedDB); projetos da v11 continuam abrindo.
+
+COR DO PRODUTO
+- Painel > "Cor da camiseta / ecobag / caneca": 20 cores prontas + seletor livre. Cada produto lembra a sua cor.
+- A cor não é pintada por cima: cada pixel é re-iluminado em luz linear a partir do branco medido no cenário, então dobras,
+  sombras, textura do tecido, cor da luz e brilho do esmalte da foto são preservados.
+- Cores escuras ativam sozinhas a estampa opaca (a tinta multiply sumiria). Nas canecas há ainda:
+  "só alça e interior" (corpo branco para a estampa) e o tipo de estampa (sublimação que mistura com a cor, ou opaca).
+- A cor vale também na exportação e no ZIP em lote. Projetos salvos guardam a cor.
+- As máscaras vêm prontas. Para corrigir um cenário, edite DICAS em tools/gerar_mascaras.js
+  (rect/core, cortes, parede, borda, preencher) e rode:  cd tools && npm i && node gerar_mascaras.js --so=g20
+
+ATALHOS
+Camisetas: setas movem a estampa selecionada · Esc e depois ← → trocam de cenário · Ctrl+Z / Ctrl+Shift+Z desfazer/refazer
+Canecas:   ← → trocam de cenário · M espelha a cena
+Ambos:     PgUp/PgDn trocam de cenário · / busca · F favorita · R aleatório · G galeria expandida
