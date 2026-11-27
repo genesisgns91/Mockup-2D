@@ -23,7 +23,7 @@ const lumOf=h=>{const c=rgb(h).map(v=>lin[v]);return .2126*c[0]+.7152*c[1]+.0722
 
 /* D: RGBA (modificado no lugar) · M: máscara 0-255 por pixel · retorna a razão de luminância nova/antiga */
 function recolor(D,M,n,hex,o={}){
-  const gloss=o.gloss??.1,sheen=o.sheen??.06,hi=o.hi||[1.35,1.7];
+  const gloss=o.gloss??.1,sheen=o.sheen??.06,hi=o.hi||[1.35,1.7],satG=o.sat||[.07,.2];
   const T=rgb(hex),Tl=T.map(v=>lin[v]),Tlum=.2126*Tl[0]+.7152*Tl[1]+.0722*Tl[2];
   /* 1) branco de referência: média dos pixels mais claros (percentis 80–97) dentro da máscara */
   const idx=[];for(let i=0;i<n;i+=5)if(M[i]>200)idx.push(i);
@@ -42,7 +42,7 @@ function recolor(D,M,n,hex,o={}){
     let w=M[i]/255;if(w<.01)continue;
     const j=i*4,r=D[j],g=D[j+1],b=D[j+2],L=.2126*r+.7152*g+.0722*b,mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=(mx-mn)/(mx+1),Lf=L/Fl;
     // proteção: pele, cabelo, jeans, céu e reflexos estourados não são tecido branco
-    w*=(1-sm(satF+.07,satF+.2,sat))*sm(.1,.28,Lf)*(1-sm(hi[0],hi[1],Lf));
+    w*=(1-sm(satF+satG[0],satF+satG[1],sat))*sm(.1,.28,Lf)*(1-sm(hi[0],hi[1],Lf));
     if(w<.01)continue;
     const rl=lin[r],gl=lin[g],bl=lin[b];
     let Lr=(.2126*rl+.7152*gl+.0722*bl)/FL;if(Lr>1.7)Lr=1.7;

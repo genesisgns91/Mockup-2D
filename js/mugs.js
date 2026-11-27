@@ -415,7 +415,7 @@ $('bgHud').addEventListener('click',()=>{
 });
 
 /* ---------- cor da caneca: máscara do cenário (cerâmica + alça); "extras" deixa o corpo branco ---------- */
-const TINTO={gloss:.9,sheen:.045,hi:[1.9,2.6]};
+const TINTO={gloss:.9,sheen:.045,hi:[1.9,2.6],sat:[.3,.55]};   // o esmalte reflete o ambiente: a máscara já é confiável, então o filtro de saturação é frouxo
 function flipMask(M){const T=OUT_SIZE,o=new Uint8Array(M.length);for(let y=0;y<T;y++)for(let x=0;x<T;x++)o[y*T+x]=M[y*T+T-1-x];return o;}
 async function buildTintMask(scene,m,T,ox,oy,dw,dh){
   const mi=await Cor.loadMask(scene.src.replace('assets/canecas/','assets/canecas/mascaras/').replace(/\.\w+$/,'.webp'));if(!mi)return null;

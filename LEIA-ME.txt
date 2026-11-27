@@ -40,6 +40,7 @@ COR DO PRODUTO
 - Cores escuras ativam sozinhas a estampa opaca (a tinta multiply sumiria). Nas canecas há ainda:
   "só alça e interior" (corpo branco para a estampa) e o tipo de estampa (sublimação que mistura com a cor, ou opaca).
 - A cor vale também na exportação e no ZIP em lote. Projetos salvos guardam a cor.
+- Máscaras melhoradas por IA: veja tools/ia/COMANDOS-PARA-IA.txt (comandos prontos) e rode  node importar_mascaras.js --revisao  em tools/.
 - As máscaras vêm prontas. Para corrigir um cenário, edite DICAS em tools/gerar_mascaras.js
   (rect/core, cortes, parede, borda, preencher) e rode:  cd tools && npm i && node gerar_mascaras.js --so=g20
 

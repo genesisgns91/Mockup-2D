@@ -1,0 +1,49 @@
+COMO MELHORAR AS MÁSCARAS COM UMA IA DE EDIÇÃO DE IMAGEM
+=========================================================
+Ideia: a IA devolve a MESMA foto com o produto pintado de MAGENTA chapado. A máscara sai dessa cor e o
+alinhamento com a foto original é automático. Você não precisa de nada perfeito: só a cor e o contorno.
+
+PASSO A PASSO
+1) Envie para a IA UMA foto por vez (as 15 estão no pacote Fotos-para-IA, em PNG).
+2) Cole o COMANDO abaixo (o da camiseta, da ecobag ou da caneca, conforme o caso).
+3) Salve o resultado em tools/ia/ com o MESMO nome da original (ex.: cena-14.png).
+4) Rode:   cd tools && npm i && node importar_mascaras.js --revisao
+5) Abra tools/ia/revisao/*.jpg: a área em VERDE é a máscara. Se estiver certa, publique. Se não, repita só aquela foto.
+
+CENÁRIOS PRIORITÁRIOS (os que ainda têm defeito visível)
+ Camisetas : cena-01, cena-10, cena-14, cena-16, cena-17, cena-20, cena-30, cena-41, cena-65
+ Ecobags   : cena-03, cena-08, cena-12, cena-15, cena-24, cena-46
+
+REGRAS DE OURO (valem para todos os comandos)
+ - Peça para EDITAR a imagem enviada (não para gerar outra). Use um modelo de edição que preserve a foto.
+ - O resultado precisa ter o mesmo enquadramento e proporção. Se vier cortado, esticado ou movido, descarte e peça de novo.
+ - Se a cor vier rosa claro ou lilás, peça: "use exatamente #FF00FF, mais saturado, sem degradê".
+ - Uma foto por pedido. Não peça várias de uma vez.
+
+----------------------------------------------------------------------------------------------------
+COMANDO 1 — CAMISETA
+----------------------------------------------------------------------------------------------------
+Edite esta foto (não gere uma nova). Pinte SOMENTE a camiseta com a cor magenta chapada #FF00FF (RGB 255, 0, 255): cor 100% uniforme, sem sombras, sem textura, sem degradê e sem brilho. A camiseta inclui o corpo inteiro, as duas mangas, a gola e a barra.
+NÃO pinte: pele, rosto, cabelo, braços, mãos, tatuagens, colar, pulseira, relógio, calça, shorts, jeans, camiseta ou regata de baixo, fundo, objetos nem sombras no chão.
+Mantenha EXATAMENTE o mesmo enquadramento, a mesma proporção e a mesma resolução: não corte, não mova, não amplie, não gire, não aplique filtros e não altere nenhum pixel fora da camiseta. As bordas da camiseta devem seguir o contorno real, nítidas, sem contorno, sem halo e sem desfoque. Se parte da camiseta estiver encoberta por mão, braço, cabelo ou objeto, deixe essa parte sem pintar.
+(Se a foto tiver DUAS camisetas, pinte as duas.)
+
+----------------------------------------------------------------------------------------------------
+COMANDO 2 — ECOBAG
+----------------------------------------------------------------------------------------------------
+Edite esta foto (não gere uma nova). Pinte SOMENTE a ecobag (bolsa de pano) com a cor magenta chapada #FF00FF (RGB 255, 0, 255): cor 100% uniforme, sem sombras, sem textura, sem degradê e sem brilho. Inclua o corpo da bolsa, as duas alças, as costuras e qualquer bolso ou aba.
+NÃO pinte: mão, braço, ombro, cabelo, roupa da pessoa, cabide, prego, suporte, parede, piso, plantas, objetos nem sombras.
+Mantenha EXATAMENTE o mesmo enquadramento, a mesma proporção e a mesma resolução: não corte, não mova, não amplie, não gire, não aplique filtros e não altere nenhum pixel fora da ecobag. As bordas devem seguir o contorno real, nítidas, sem contorno, sem halo e sem desfoque. Se parte da bolsa estiver encoberta (por mão, braço ou objeto), deixe essa parte sem pintar. Nas alças, pinte só a parte visível.
+
+----------------------------------------------------------------------------------------------------
+COMANDO 3 — CANECA
+----------------------------------------------------------------------------------------------------
+Edite esta foto (não gere uma nova). Pinte SOMENTE a cerâmica de TODAS as canecas com a cor magenta chapada #FF00FF (RGB 255, 0, 255): cor 100% uniforme, sem sombras, sem reflexos, sem degradê. Inclua o corpo, a alça, a borda e o interior visível de cada caneca.
+NÃO pinte: bebida ou líquido, vapor, mãos, dedos, pires, pratinho, objetos, fundo nem sombras.
+Mantenha EXATAMENTE o mesmo enquadramento, a mesma proporção e a mesma resolução: não corte, não mova, não amplie, não gire, não aplique filtros e não altere nenhum pixel fora das canecas. As bordas devem seguir o contorno real, nítidas, sem contorno, sem halo e sem desfoque.
+
+----------------------------------------------------------------------------------------------------
+PLANO B — se a IA não conseguir pintar de magenta (máscara preto e branco)
+----------------------------------------------------------------------------------------------------
+Gere uma MÁSCARA desta foto, com exatamente o mesmo enquadramento, proporção e resolução: [a camiseta / a ecobag / as canecas] em BRANCO PURO (#FFFFFF) e todo o resto em PRETO PURO (#000000). Sem tons de cinza, sem degradê, bordas nítidas seguindo o contorno real. Não corte nem mova a imagem.
+(O importador reconhece sozinho a máscara preto e branco. Nesse modo não há alinhamento automático, então confira bem a revisão.)

@@ -33,7 +33,7 @@ async function finish(bin,w,h,W,H,file){                // sobe para a resoluç�
 }
 /* ---------- camisetas e ecobags ---------- */
 // dica por cenário: 'borda' = a parede/piso claro chega às bordas da foto, então a faixa externa é fundo (ensina a cor do fundo ao GrabCut)
-const DICAS={20:{borda:1,preencher:1,parede:[2.5,7],cortes:[[0,.2,.05,1],[0,.5,.14,1],[0,.2,.12,.42]]},30:{borda:1},58:{rect:[.17,.07,.83,.97],core:[.34,.55,.70,.90]}};
+const DICAS={20:{borda:1,preencher:1,parede:[2.5,7],cortes:[[0,.2,.05,1],[0,.5,.14,1],[0,.2,.12,.42]]},30:{borda:1},15:{rect:[.2,.15,.7,.96],core:[.3,.5,.6,.85],cortes:[[.2,.15,.35,.42],[.49,.15,.75,.42]]},16:{lmin:75,lmax:75,thr:14,cortes:[[0,.2,.2,.37],[.84,.2,1,.46]]},41:{lmin:75,lmax:75,thr:14,cortes:[[0,.15,.2,.45],[.74,.15,1,.5]]},19:{sementes:[[.80,.55]]},44:{sementes:[[.80,.35]]},58:{rect:[.17,.07,.83,.97],core:[.34,.55,.70,.90]}};
 async function garment(c){
   const {rgb,al,W,H}=await readRGB(path.join(SITE,`assets/cena-${String(c.id).padStart(2,'0')}.webp`)),w=Math.round(W*SC),h=Math.round(H*SC);
   const rs=await small(rgb,W,H,3,w,h),as=await small(al,W,H,1,w,h);
@@ -42,7 +42,8 @@ async function garment(c){
   const sl=[[],[],[]];for(let y=cy-r;y<cy+r;y++)for(let x=cx-r;x<cx+r;x++)for(let k=0;k<3;k++)sl[k].push(lab.data[(y*w+x)*3+k]);
   const med=sl.map(a=>a.sort((p,q)=>p-q)[a.length>>1]);
   const WT=(DICAS[c.id]||{}).parede||[5,14];let wall=null;if((DICAS[c.id]||{}).borda){const bx=Math.round(w*.045),by=Math.round(h*.035),wl=[[],[],[]];for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(x<bx||x>=w-bx||y<by)for(let k=0;k<3;k++)wl[k].push(lab.data[(y*w+x)*3+k]);wall=wl.map(q=>q.sort((p,r)=>p-r)[q.length>>1]);}
-  let cand,thr=9;for(;;thr=16){cand=new Uint8Array(w*h);let nn=0;for(let i=0;i<w*h;i++){const d=Math.abs(lab.data[i*3+1]-med[1])+Math.abs(lab.data[i*3+2]-med[2]);const nw=wall&&Math.abs(lab.data[i*3+1]-wall[1])+Math.abs(lab.data[i*3+2]-wall[2])<WT[0]&&Math.abs(lab.data[i*3]-wall[0])<WT[1];if(!nw&&d<thr&&lab.data[i*3]>med[0]-62&&lab.data[i*3]<med[0]+30&&as[i]>250){cand[i]=255;nn++;}}if(nn>w*h*.04||thr>=16)break;}
+  const LMIN=(DICAS[c.id]||{}).lmin||62,LMAX=(DICAS[c.id]||{}).lmax||30;let cand,thr=(DICAS[c.id]||{}).thr||9;for(;;thr=16){cand=new Uint8Array(w*h);let nn=0;for(let i=0;i<w*h;i++){const d=Math.abs(lab.data[i*3+1]-med[1])+Math.abs(lab.data[i*3+2]-med[2]);const nw=wall&&Math.abs(lab.data[i*3+1]-wall[1])+Math.abs(lab.data[i*3+2]-wall[2])<WT[0]&&Math.abs(lab.data[i*3]-wall[0])<WT[1];if(!nw&&d<thr&&lab.data[i*3]>med[0]-LMIN&&lab.data[i*3]<med[0]+LMAX&&as[i]>250){cand[i]=255;nn++;}}if(nn>w*h*.04||thr>=16)break;}
+  for(const [sx,sy] of (DICAS[c.id]||{}).sementes||[]){const px=Math.round(sx*w),py=Math.round(sy*h),q=[[],[],[]];for(let y=py-r;y<py+r;y++)for(let x=px-r;x<px+r;x++)for(let k=0;k<3;k++)q[k].push(lab.data[(y*w+x)*3+k]);const m2=q.map(a=>a.sort((p,t)=>p-t)[a.length>>1]);for(let i=0;i<w*h;i++){const d=Math.abs(lab.data[i*3+1]-m2[1])+Math.abs(lab.data[i*3+2]-m2[2]);if(d<thr&&lab.data[i*3]>m2[0]-LMIN&&lab.data[i*3]<m2[0]+LMAX&&as[i]>250)cand[i]=255;}}
   src.delete();lab.delete();
   if(c.tipo!=='dupla'){const E=c.tipo==='ecobag'?[.6,.6,1.8,.7]:[1.0,1.0,.8,.9],ex0=Math.max(0,Math.round((zx-E[0]*zw)*w)),ex1=Math.min(w,Math.round((zx+zw+E[1]*zw)*w)),ey0=Math.max(0,Math.round((zy-E[2]*zh)*h)),ey1=Math.min(h,Math.round((zy+zh+E[3]*zh)*h));for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(x<ex0||x>=ex1||y<ey0||y>=ey1)cand[y*w+x]=0;}
   if((DICAS[c.id]||{}).borda){const bx=Math.round(w*.045),by=Math.round(h*.035);for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(x<bx||x>=w-bx||y<by)cand[y*w+x]=0;}
@@ -50,7 +51,7 @@ async function garment(c){
   const sureFG=morph(cand,w,h,'erode',9),dil=morph(cand,w,h,'dilate',17),init=new Uint8Array(w*h);
   for(let i=0;i<w*h;i++)init[i]=sureFG[i]?1:cand[i]?3:dil[i]?2:0;
   const hint=DICAS[c.id]||{};if(hint.rect){const R=(q)=>[Math.round(q[0]*w),Math.round(q[1]*h),Math.round(q[2]*w),Math.round(q[3]*h)],r=R(hint.rect),k=R(hint.core);init.fill(0);for(let y=r[1];y<r[3];y++)for(let x=r[0];x<r[2];x++)init[y*w+x]=3;for(let y=k[1];y<k[3];y++)for(let x=k[0];x<k[2];x++)init[y*w+x]=1;}
-  let m=grab(rs,w,h,init);m=morph(m,w,h,'open',3);m=morph(m,w,h,'close',5);m=keepLargest(m,w,h,c.tipo==='dupla'?2:1,cy*w+cx);if(hint.cortes)for(const q of hint.cortes)for(let y=Math.round(q[1]*h);y<Math.round(q[3]*h);y++)for(let x=Math.round(q[0]*w);x<Math.round(q[2]*w);x++)m[y*w+x]=0;m=keepLargest(m,w,h,1,cy*w+cx);if(hint.preencher)m=fillHoles(m,w,h);
+  let m=grab(rs,w,h,init);m=morph(m,w,h,'open',3);m=morph(m,w,h,'close',5);m=keepLargest(m,w,h,c.tipo==='dupla'?2:1,cy*w+cx);if(hint.cortes)for(const q of hint.cortes)for(let y=Math.round(q[1]*h);y<Math.round(q[3]*h);y++)for(let x=Math.round(q[0]*w);x<Math.round(q[2]*w);x++)m[y*w+x]=0;m=keepLargest(m,w,h,c.tipo==='dupla'?2:1,cy*w+cx);if(hint.preencher)m=fillHoles(m,w,h);
   const o=await finish(m,w,h,W,H,path.join(SITE,`assets/mascaras/cena-${String(c.id).padStart(2,'0')}.webp`));
   return {rgb,W,H,o};
 }
@@ -67,7 +68,7 @@ async function mug(key){
     for(let j=0;j<=N;j++){const t=-1+2*j/N,k=Math.sqrt(Math.max(0,1-t*t));top.push([m.cx+t*m.R,m.yTopC-m.ryT*(1-k)]);bot.push([m.cx+t*m.R,m.yBotC-m.ryB*(1-k)]);}
     body.push(poly(m,[...top,...bot.reverse()]));
     const el=[];for(let j=0;j<N*2;j++){const a=j/(N*2)*Math.PI*2;el.push([m.cx+Math.cos(a)*m.R*1.015,m.yTopC-m.ryT+Math.sin(a)*m.ryT*1.1]);}body.push(poly(m,el));
-    const hd=m.handle||(m.half===0?-1:1);handleBox.push(poly(m,[[m.cx+hd*m.R*.8,m.yTopC-m.ryT],[m.cx+hd*m.R*1.9,m.yTopC-m.ryT],[m.cx+hd*m.R*1.9,m.yBotC],[m.cx+hd*m.R*.8,m.yBotC]]));
+    const hd=m.handle||(m.half===0?-1:1);handleBox.push(poly(m,[[m.cx+hd*m.R*.8,m.yTopC-m.ryT],[m.cx+hd*m.R*2.45,m.yTopC-m.ryT],[m.cx+hd*m.R*2.45,m.yBotC],[m.cx+hd*m.R*.8,m.yBotC]]));
   }
   const B=fill(body),HB=fill(handleBox),sureFG=morph(B,w,h,'erode',9),dil=morph(B,w,h,'dilate',9),hbd=morph(HB,w,h,'dilate',9);
   // branco de referência da cerâmica (percentil alto do corpo) para reconhecer a alça
